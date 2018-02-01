@@ -10,12 +10,19 @@ import PropTypes from "prop-types";
 
 function App(props) {
 	var productDivs = [];
-    productDivs = props.products.map((p)=> {
+	function filterProduct(product){
+		// var category = props.category
+		return product.category === props.currentCategory;
+	}
+	var filteredProduct = props.products.filter(filterProduct)
+    productDivs = filteredProduct.map((p)=> {
         return <ProductDetail product={p} />;
 	});
 	console.log("LoggingProductDivs", productDivs);
 
+	// function changeCategory = props.changeCategory();
 	
+
     return (
       <div className="App">
         	<div className="wrap">
@@ -62,7 +69,7 @@ function App(props) {
 				<div className="clear"> </div>
 			</div> */}
 			<div className="clear"> </div>
-			<TopNav /> 
+			<TopNav change={props.change} currentCategory={props.currentCategory}/> 
 			{/* <div className="top-nav">
 				<ul>
 					<li><a href="carlights.html">car lights</a></li>
@@ -226,7 +233,7 @@ function App(props) {
       </div>
     );
 }
-// App.propTypes = {
-// 	product: PropTypes.isRequired
-//   };
+App.propTypes = {
+	product: PropTypes.isRequired
+  };
 export default App;

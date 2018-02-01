@@ -1,10 +1,15 @@
 import React from "react";
 
-function TopNav() {
+function TopNav(props) {
   return (
     <div className="top-nav">
     <ul>
-        <li><a href="carlights.html">car lights</a></li>
+        <li><a href="#" onClick={()=>{
+            props.change("headlights");
+        }}>car lights</a></li>
+        <li><a href="#" onClick={()=>{
+            props.change("car wheels");
+        }}>car wheels</a></li> 
         <li><a href="carwheels.html">Car wheels</a></li>
         <li><a href="carbumpers.html">car bumpers</a></li>
         <li><a href="caradsystem.html">car audiosystem</a></li>
